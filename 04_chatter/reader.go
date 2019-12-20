@@ -28,6 +28,9 @@ func reader() {
 
 // sendMessage sends a message to all peers including ourself
 func sendMessage(msg string) {
+	// print msg on our side
+	log.Printf("<%s> %s", id, msg)
+
 	// range over peers
 	peers.Range(func(key interface{}, value interface{}) bool {
 		peerIP := value.(string)
@@ -46,7 +49,4 @@ func sendMessage(msg string) {
 
 		return true
 	})
-
-	// print msg on our side
-	log.Printf("<%s> %s", id, msg)
 }
