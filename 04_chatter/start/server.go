@@ -3,8 +3,8 @@ package main
 // listen to incoming udp packets
 func updServer() {
 	// starts a udp listener (connection) on port "udpPort"
-	// use a "for loop" to keep on handling messages (i.e call "handleMessage")
-	// remember connections are resources and need to be closed if opened ;)
+	// remember connections are resources and need to be closed (aka 'freed') if opened ;)
+	// use a "for loop" to continuously "handle" incoming messages (i.e use "handleMessage")
 	// if there's an error when starting server, log.Fatal ;)
 }
 

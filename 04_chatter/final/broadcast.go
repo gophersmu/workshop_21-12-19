@@ -6,7 +6,7 @@ import "net"
 func broadcastMessage(msg string) {
 	// range over "peers" and dial a udp connection for each peer
 	// use the connection to send "msg" (e.g conn.Write(msg))
-	// remember connections are resources and need to be closed if opened ;)
+	// remember connections are resources and need to be closed (aka 'freed') if opened ;)
 	peers.Range(func(key interface{}, value interface{}) bool {
 		peerIP := value.(string)
 

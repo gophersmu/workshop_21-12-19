@@ -13,6 +13,7 @@ func discoverer() {
 	// use "peerdiscovery" package to actively discover
 	// new peers on the network
 	// everytime there's a new peer, "store" it in "peers"
+	// and "add" the user on the UI (i.e use ui.AddUser)
 	// if there's an error, log.Fatal ;)
 	ui.AddMessage(infoID, "Peer discovery started...")
 

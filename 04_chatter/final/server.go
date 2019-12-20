@@ -11,7 +11,7 @@ import (
 func updServer() {
 	// starts a udp listener (connection) on port "udpPort"
 	// use a "for loop" to keep on handling messages (i.e call "handleMessage")
-	// remember connections are resources and need to be closed if opened ;)
+	// remember connections are resources and need to be closed (aka 'freed') if opened ;)
 	// if there's an error when starting server, log.Fatal ;)
 	conn, err := net.ListenUDP("udp", &net.UDPAddr{
 		Port: udpPort,
@@ -42,9 +42,10 @@ func updServer() {
 
 // handleMessage handles a message from updServer
 func handleMessage(ip string, msg string) {
-	// use "ip" to get "id" from "peers"
-	// if "ip" does not exist in "peers", ignore the "msg"
-	// display "id" and "msg" on the UI (i.e use ui.AddMessage)
+	// starts a udp listener (connection) on port "udpPort"
+	// remember connections are resources and need to be closed (aka 'freed') if opened ;)
+	// use a "for loop" to continuously "handle" incoming messages (i.e use "handleMessage")
+	// if there's an error when starting server, log.Fatal ;)
 	rawID, ok := peers.Load(ip)
 	if !ok {
 		return
