@@ -43,6 +43,6 @@ func main() {
 
 	// Starts the terminal ui in blocking
 	if err := ui.Run(); err != nil {
-		log.Fatal("failed to start ui: %v", err)
+		log.Fatalf("failed to start ui: %v", err)
 	}
 }
