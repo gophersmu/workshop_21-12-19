@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -9,7 +10,7 @@ import (
 
 // Discover peers on same network
 func discoverer() {
-	log.Printf("Peer discovery started...\n")
+	ui.addMessage("SERVER", "Peer discovery started...")
 
 	_, err := peerdiscovery.Discover(
 		peerdiscovery.Settings{
@@ -23,7 +24,8 @@ func discoverer() {
 				ip := d.Address
 				peers.Store(ip, id)
 
-				log.Printf("Peer %s discovered @ %s\n", id, ip)
+				ui.addMessage("SERVER", fmt.Sprintf("%s has joined ^_^", id))
+				ui.addUsers(id)
 			},
 		},
 	)

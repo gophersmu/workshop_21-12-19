@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"sync"
 
 	"github.com/gophersmu/workshop_21-12-19/chatter/rand"
@@ -17,11 +18,22 @@ var (
 
 	// peers represents a map[ip]id
 	peers sync.Map
+
+	// ui represents the terminal chat ui
+	ui *UI
 )
 
 func main() {
+	var err error
+
 	// Generate our ID using a random string of length 10
 	id = rand.String(10)
+
+	// Create a new terminal UI
+	ui, err = NewUI()
+	if err != nil {
+		log.Fatalf("failed to create ui: %v", err)
+	}
 
 	// Starts discoverer in non-blocking
 	go discoverer()
@@ -29,6 +41,8 @@ func main() {
 	// Starts UDP Server in non-blocking
 	go updServer()
 
-	// Starts the terminal reader in blocking
-	reader()
+	// Starts the terminal ui in blocking
+	if err := ui.Run(); err != nil {
+		log.Fatal("failed to start ui: %v", err)
+	}
 }

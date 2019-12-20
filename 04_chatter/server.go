@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 	"strings"
@@ -18,7 +19,7 @@ func updServer() {
 
 	defer conn.Close()
 
-	log.Printf("UDP server listening @ %s...\n", conn.LocalAddr().String())
+	ui.addMessage("SERVER", fmt.Sprintf("UDP server listening @ %s...", conn.LocalAddr().String()))
 
 	for {
 		data := make([]byte, 256)
@@ -37,11 +38,13 @@ func updServer() {
 
 // handleMessage handles a message from updServer
 func handleMessage(ip string, msg string) {
-	id, ok := peers.Load(ip)
+	rawID, ok := peers.Load(ip)
 	if !ok {
 		// Ignore if we don't know that peer
 		return
 	}
 
-	log.Printf("<%s> %s", id, msg)
+	id := rawID.(string)
+
+	ui.addMessage(id, msg)
 }
