@@ -78,14 +78,18 @@ func NewUI() (*UI, error) {
 }
 
 func (u *UI) addMessage(author string, message string) {
-	u.messages.Append(tui.NewHBox(
-		tui.NewLabel(time.Now().Format("15:04")),
-		tui.NewPadder(1, 0, tui.NewLabel(fmt.Sprintf("<%s>", author))),
-		tui.NewLabel(message),
-		tui.NewSpacer(),
-	))
+	u.Update(func() {
+		u.messages.Append(tui.NewHBox(
+			tui.NewLabel(time.Now().Format("15:04")),
+			tui.NewPadder(1, 0, tui.NewLabel(fmt.Sprintf("<%s>", author))),
+			tui.NewLabel(message),
+			tui.NewSpacer(),
+		))
+	})
 }
 
 func (u *UI) addUsers(user string) {
-	u.users.Append(tui.NewLabel(user))
+	u.Update(func() {
+		u.users.Append(tui.NewLabel(user))
+	})
 }
