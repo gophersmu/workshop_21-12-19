@@ -2,8 +2,8 @@ package main
 
 import "net"
 
-// sendMessage sends a message to all peers
-func sendMessage(msg string) {
+// broadcastMessage sends a message to all peers
+func broadcastMessage(msg string) {
 	// range over peers
 	peers.Range(func(key interface{}, value interface{}) bool {
 		peerIP := value.(string)

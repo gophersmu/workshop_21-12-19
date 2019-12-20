@@ -55,7 +55,7 @@ func NewUI() (*UI, error) {
 		}
 
 		// send message to peers
-		go sendMessage(msg)
+		go broadcastMessage(msg)
 
 		// display message on our side
 		messages.Append(tui.NewHBox(
