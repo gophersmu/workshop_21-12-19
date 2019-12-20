@@ -9,7 +9,7 @@ import (
 )
 
 // Discover peers on same network
-func discoverer() {
+func discover() {
 	ui.AddMessage(infoID, "Peer discovery started...")
 
 	_, err := peerdiscovery.Discover(

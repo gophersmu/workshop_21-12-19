@@ -19,7 +19,7 @@ func updServer() {
 
 	defer conn.Close()
 
-	ui.AddMessage("SERVER", fmt.Sprintf("UDP server listening @ %s...", conn.LocalAddr().String()))
+	ui.AddMessage(infoID, fmt.Sprintf("UDP server listening @ %s...", conn.LocalAddr().String()))
 
 	for {
 		data := make([]byte, 256)

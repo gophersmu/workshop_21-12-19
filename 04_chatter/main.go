@@ -10,6 +10,9 @@ import (
 const (
 	// udp port used for our server and remote clients
 	udpPort = 13337
+
+	// id used to display INFO messages
+	infoID = "INFO"
 )
 
 var (
