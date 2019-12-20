@@ -10,7 +10,7 @@ import (
 
 // Discover peers on same network
 func discoverer() {
-	ui.addMessage("SERVER", "Peer discovery started...")
+	ui.AddMessage("SERVER", "Peer discovery started...")
 
 	_, err := peerdiscovery.Discover(
 		peerdiscovery.Settings{
@@ -24,8 +24,8 @@ func discoverer() {
 				ip := d.Address
 				peers.Store(ip, id)
 
-				ui.addMessage("SERVER", fmt.Sprintf("%s has joined ^_^", id))
-				ui.addUsers(id)
+				ui.AddMessage("SERVER", fmt.Sprintf("%s has joined ^_^", id))
+				ui.AddUser(id)
 			},
 		},
 	)

@@ -62,7 +62,7 @@ func NewUI() (*UI, error) {
 		go sendMessage(msg)
 
 		// display message on our side
-		ui.addMessage(id, msg)
+		ui.AddMessage(id, msg)
 	})
 
 	root := tui.NewHBox(usersBox, chat)
@@ -77,7 +77,8 @@ func NewUI() (*UI, error) {
 	return &UI{messages, users, ui}, nil
 }
 
-func (u *UI) addMessage(author string, message string) {
+// AddMessage adds a message in the message box
+func (u *UI) AddMessage(author string, message string) {
 	u.Update(func() {
 		u.messages.Append(tui.NewHBox(
 			tui.NewLabel(time.Now().Format("15:04")),
@@ -88,7 +89,8 @@ func (u *UI) addMessage(author string, message string) {
 	})
 }
 
-func (u *UI) addUsers(user string) {
+// AddUser adds a user in the users box
+func (u *UI) AddUser(user string) {
 	u.Update(func() {
 		u.users.Append(tui.NewLabel(user))
 	})
