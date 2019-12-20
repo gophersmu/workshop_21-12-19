@@ -2,7 +2,7 @@
 
 Chatter is a simple peer-to-peer UDP chat application. 
 
-<div style="text-align:center"><img src="https://i.chzbgr.com/original/2734699264/hAED1D724/cheezburger-image-2734699264" alt="ALAN!ALAN!!! STEVE!STEVE!!"></div>
+<div style="text-align:center"><img align="center" src="https://i.chzbgr.com/original/2734699264/hAED1D724/cheezburger-image-2734699264" alt="ALAN!ALAN!!! STEVE!STEVE!!"></div>
 
 ---
 
