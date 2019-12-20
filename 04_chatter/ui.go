@@ -58,12 +58,7 @@ func NewUI() (*UI, error) {
 		go broadcastMessage(msg)
 
 		// display message on our side
-		messages.Append(tui.NewHBox(
-			tui.NewLabel(time.Now().Format("15:04")),
-			tui.NewPadder(1, 0, tui.NewLabel(fmt.Sprintf("<%s>", id))),
-			tui.NewLabel(msg),
-			tui.NewSpacer(),
-		))
+		messages.Append(ui.newMessageBox(id, msg))
 	})
 
 	inputBox := tui.NewHBox(input)
@@ -90,12 +85,7 @@ func NewUI() (*UI, error) {
 // AddMessage adds a message in the message box
 func (u *UI) AddMessage(author string, message string) {
 	u.Update(func() {
-		u.messages.Append(tui.NewHBox(
-			tui.NewLabel(time.Now().Format("15:04")),
-			tui.NewPadder(1, 0, tui.NewLabel(fmt.Sprintf("<%s>", author))),
-			tui.NewLabel(message),
-			tui.NewSpacer(),
-		))
+		u.messages.Append(u.newMessageBox(author, message))
 	})
 }
 
@@ -104,4 +94,14 @@ func (u *UI) AddUser(user string) {
 	u.Update(func() {
 		u.users.Append(tui.NewLabel(user))
 	})
+}
+
+// newMessageBox returns a new message box
+func (u *UI) newMessageBox(author string, message string) *tui.Box {
+	return tui.NewHBox(
+		tui.NewLabel(time.Now().Format("15:04")),
+		tui.NewPadder(1, 0, tui.NewLabel(fmt.Sprintf("<%s>", author))),
+		tui.NewLabel(message),
+		tui.NewSpacer(),
+	)
 }
