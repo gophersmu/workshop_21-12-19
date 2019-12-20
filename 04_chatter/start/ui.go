@@ -20,13 +20,13 @@ type UI struct {
 func NewUI() (*UI, error) {
 	// Users widget
 	users := tui.NewVBox(
-		tui.NewLabel("USERS:"),
-		tui.NewLabel(id+" (me)"),
+		tui.NewLabel(id + " (me)"),
 	)
 
 	usersScroll := tui.NewScrollArea(users)
 
 	usersBox := tui.NewVBox(usersScroll)
+	usersBox.SetTitle("USERS")
 	usersBox.SetBorder(true)
 
 	// Messages widget
@@ -63,6 +63,7 @@ func NewUI() (*UI, error) {
 
 	inputBox := tui.NewHBox(input)
 	inputBox.SetBorder(true)
+	inputBox.SetTitle("Say something")
 	inputBox.SetSizePolicy(tui.Expanding, tui.Maximum)
 
 	// Chat group widget
