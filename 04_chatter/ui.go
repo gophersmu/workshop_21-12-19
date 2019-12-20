@@ -58,7 +58,12 @@ func NewUI() (*UI, error) {
 		go sendMessage(msg)
 
 		// display message on our side
-		ui.AddMessage(id, msg)
+		messages.Append(tui.NewHBox(
+			tui.NewLabel(time.Now().Format("15:04")),
+			tui.NewPadder(1, 0, tui.NewLabel(fmt.Sprintf("<%s>", id))),
+			tui.NewLabel(msg),
+			tui.NewSpacer(),
+		))
 	})
 
 	inputBox := tui.NewHBox(input)
