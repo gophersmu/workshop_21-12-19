@@ -18,6 +18,7 @@ type UI struct {
 
 // NewUI returns a new UI
 func NewUI() (*UI, error) {
+	// Users widget
 	users := tui.NewVBox(
 		tui.NewLabel("USERS:"),
 		tui.NewLabel(id+" (me)"),
@@ -28,6 +29,7 @@ func NewUI() (*UI, error) {
 	usersBox := tui.NewVBox(usersScroll)
 	usersBox.SetBorder(true)
 
+	// Messages widget
 	messages := tui.NewVBox()
 
 	messagesScroll := tui.NewScrollArea(messages)
@@ -36,16 +38,10 @@ func NewUI() (*UI, error) {
 	messagesBox := tui.NewVBox(messagesScroll)
 	messagesBox.SetBorder(true)
 
+	// Input widget
 	input := tui.NewEntry()
 	input.SetFocused(true)
 	input.SetSizePolicy(tui.Expanding, tui.Maximum)
-
-	inputBox := tui.NewHBox(input)
-	inputBox.SetBorder(true)
-	inputBox.SetSizePolicy(tui.Expanding, tui.Maximum)
-
-	chat := tui.NewVBox(messagesBox, inputBox)
-	chat.SetSizePolicy(tui.Expanding, tui.Expanding)
 
 	input.OnSubmit(func(e *tui.Entry) {
 		// clear input box
@@ -65,6 +61,15 @@ func NewUI() (*UI, error) {
 		ui.AddMessage(id, msg)
 	})
 
+	inputBox := tui.NewHBox(input)
+	inputBox.SetBorder(true)
+	inputBox.SetSizePolicy(tui.Expanding, tui.Maximum)
+
+	// Chat group widget
+	chat := tui.NewVBox(messagesBox, inputBox)
+	chat.SetSizePolicy(tui.Expanding, tui.Expanding)
+
+	// Root widget
 	root := tui.NewHBox(usersBox, chat)
 
 	ui, err := tui.New(root)
