@@ -58,7 +58,7 @@ func NewUI() (*UI, error) {
 		go broadcastMessage(msg)
 
 		// display message on our side
-		messages.Append(ui.newMessageBox(id, msg))
+		ui.messages.Append(ui.newMessageBox(id, msg))
 	})
 
 	inputBox := tui.NewHBox(input)
