@@ -1,6 +1,6 @@
 package main
 
-// listen to incoming udp packets
+// updServer listens to incoming udp packets
 func updServer() {
 	// starts a udp listener (connection) on port "udpPort"
 	// remember connections are resources and need to be closed (aka 'freed') if opened ;)
