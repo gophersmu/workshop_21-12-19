@@ -25,4 +25,11 @@ Use the code in the directory `start` as scaffold. *Comments are placed to guide
 You can refer to the code in the directory `final` as reference if you ever get stuck ;)
 
 ---
+
+## Gotchas
+
+Code in the directory `final` is **NOT** a state-of-the-art implementation of Chatter. Some details have been left out intentionally to give you room for creativity and some debugging ;)
+
+---
+
 **GOOD LUCK AND HAVE FUN!**
