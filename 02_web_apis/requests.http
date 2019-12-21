@@ -1,0 +1,22 @@
+# GET http://localhost:8080/products
+
+# GET http://localhost:8080/product/5
+
+# POST http://localhost:8080/product
+# Content-Type: application/json
+#
+# {
+#     "product": "Product X",
+#     "image": "/images/products/x.jpg",
+#     "quantity": 1
+# }
+
+# PUT http://localhost:8080/product/5
+# Content-Type: application/json
+#
+# {
+#     "product": "Product 12",
+#     "quantity": 1
+# }
+
+# DELETE http://localhost:8080/product/5
