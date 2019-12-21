@@ -15,7 +15,6 @@ func updServer() {
 	// if there's an error when starting server, log.Fatal ;)
 	conn, err := net.ListenUDP("udp", &net.UDPAddr{
 		Port: udpPort,
-		IP:   net.ParseIP("0.0.0.0"),
 	})
 	if err != nil {
 		log.Fatalf("UDP server failed: %v", err)
@@ -28,7 +27,7 @@ func updServer() {
 	for {
 		data := make([]byte, 256)
 
-		dlen, addr, err := conn.ReadFromUDP(data[:])
+		dlen, addr, err := conn.ReadFromUDP(data)
 		if err != nil {
 			continue
 		}

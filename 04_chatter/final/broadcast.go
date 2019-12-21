@@ -8,7 +8,7 @@ func broadcastMessage(msg string) {
 	// use the connection to send "msg" (e.g conn.Write(msg))
 	// remember connections are resources and need to be closed (aka 'freed') if opened ;)
 	peers.Range(func(key interface{}, value interface{}) bool {
-		peerIP := value.(string)
+		peerIP := key.(string)
 
 		conn, err := net.DialUDP("udp", nil, &net.UDPAddr{
 			Port: udpPort,

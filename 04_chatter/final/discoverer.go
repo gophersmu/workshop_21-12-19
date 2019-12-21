@@ -27,7 +27,12 @@ func discoverer() {
 				// A new peer was discovered
 				id := string(d.Payload)
 				ip := d.Address
-				peers.Store(ip, id)
+
+				_, loaded := peers.LoadOrStore(ip, id)
+				if loaded {
+					// User already exist
+					return
+				}
 
 				ui.AddMessage(infoID, fmt.Sprintf("%s has joined ^_^", id))
 				ui.AddUser(id)
