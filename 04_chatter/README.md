@@ -6,6 +6,13 @@ Chatter is a simple peer-to-peer UDP chat application.
 
 ---
 
+## Requirements
+
+- [Go](https://golang.org/dl/) installed (> Go 1.10)
+- Gone through [The Tour of Go](https://tour.golang.org/)
+
+---
+
 ## Goals
 
 The goal of this workshop session is to understand how to:
