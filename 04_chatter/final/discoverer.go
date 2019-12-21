@@ -31,6 +31,8 @@ func discoverer() {
 				_, loaded := peers.LoadOrStore(ip, id)
 				if loaded {
 					// User already exist
+					// just update the id
+					peers.Store(ip, id)
 					return
 				}
 
